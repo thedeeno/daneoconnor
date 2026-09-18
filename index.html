@@ -143,10 +143,17 @@
   }
   .card .shot img{display:block;width:100%;height:auto;max-height:220px;object-fit:cover;object-position:top}
   .card:hover .shot{transform:rotate(-1deg) translateY(-6px)}
+  .card .shot.phone{width:48%;margin-right:-4%;border-radius:18px}
+  .card .shot.phone img{max-height:300px}
   .card.has-shot{justify-content:flex-start}
   .card.has-shot p{max-width:44ch}
-  .card.span-6 .shot{width:52%;margin-top:-40px}
-  @media (max-width:999px){.card.span-6 .shot{width:84%;margin-top:28px}}
+  @media (min-width:1000px){
+    .card.span-6{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:end}
+    .card.span-6 .top{grid-column:1/-1}
+    .card.span-6 .shot{grid-column:2;grid-row:2;width:100%;margin:0 -9% -14% 0;align-self:end}
+    .card.span-6 .shot img{max-height:260px}
+    .card.span-6 .art{grid-column:1/-1}
+  }
   .c-fire .art{background:radial-gradient(circle,#ff5a1f,#7a1fff 60%,transparent 72%)}
   .c-dash .art{background:radial-gradient(circle,#ffd166,#ff5a1f 60%,transparent 72%)}
   .c-table .art{background:radial-gradient(circle,#2bd4a6,#1f7aff 60%,transparent 72%)}
@@ -302,7 +309,7 @@
         <div class="top"><span class="tag">Generative video · Music</span><span class="arrow">→</span></div>
         <div><h3>Fireframe<small>fireframe.ai</small></h3>
         <p>Text‑to‑video AI for music lovers and creators. Upload a track, direct the visuals, and get a stylized music video that moves with the beat.</p></div>
-        <div class="shot"><img src="assets/fireframe.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="shot phone"><img src="assets/fireframe.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
         <div class="art"></div>
       </a>
       <a class="card c-tandem has-shot span-2 r" href="https://tandemtools.com" target="_blank" rel="noopener">
