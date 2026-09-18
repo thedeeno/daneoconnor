@@ -184,6 +184,8 @@
   /* contact */
   .contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,110px);line-height:.95;letter-spacing:-.02em}
   .contact .row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .contact .row.follow{margin-top:22px;align-items:center}
+  .contact .row.follow .mono{color:var(--ink-3);margin-right:6px}
 
   footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--ink-3)}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -392,15 +394,22 @@
     <span class="mono num">06 — Contact</span>
     <h2>Let's build <span class="em">something.</span></h2>
     <div class="row">
-      <a class="btn primary" href="mailto:dane@fireframe.ai">dane@fireframe.ai</a>
+      <a class="btn primary" href="mailto:dane@openthrottle.consulting">dane@openthrottle.consulting</a>
       <a class="btn" href="https://openthrottle.consulting" target="_blank" rel="noopener">Open Throttle Consulting ↗</a>
+    </div>
+    <div class="row follow">
+      <span class="mono">Follow</span>
+      <a class="btn" href="https://x.com/thedeeno" target="_blank" rel="noopener">X · @thedeeno ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/thedeeno/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/thedeeno" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://soundcloud.com/thedeeno" target="_blank" rel="noopener">SoundCloud ↗</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>© <span id="y"></span> Dane O'Connor</span>
+    <span>© <span id="y"></span> Dane O'Connor · <a href="https://x.com/thedeeno" target="_blank" rel="noopener">X</a> · <a href="https://www.linkedin.com/in/thedeeno/" target="_blank" rel="noopener">LinkedIn</a></span>
     <span class="mono">Built by hand, with help.</span>
   </div>
 </footer>
