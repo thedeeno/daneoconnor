@@ -65,6 +65,12 @@
 
   /* hero */
   .hero{padding:clamp(72px,12vw,150px) 0 clamp(56px,8vw,110px);position:relative;overflow:hidden}
+  .hero .wrap{display:grid;gap:36px;align-items:center}
+  @media (min-width:900px){.hero .wrap{grid-template-columns:1fr auto;gap:56px}}
+  .hero .portrait{position:relative;width:clamp(96px,26vw,320px);aspect-ratio:1;border-radius:50%;padding:6px;
+    background:conic-gradient(from 210deg,var(--accent),transparent 40%,transparent 60%,var(--accent));order:-1;justify-self:start}
+  @media (min-width:900px){.hero .portrait{order:0;justify-self:end}}
+  .hero .portrait img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:1px solid var(--line);filter:grayscale(1) contrast(1.05)}
   .hero .kicker{display:flex;align-items:center;gap:12px;margin-bottom:28px}
   .hero .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent);animation:pulse 2.4s infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 24%,transparent)}50%{box-shadow:0 0 0 10px transparent}}
@@ -129,18 +135,18 @@
   .card .art{position:absolute;inset:auto -20% -40% auto;width:60%;aspect-ratio:1;border-radius:50%;filter:blur(40px);opacity:.45;pointer-events:none;transition:opacity .3s}
   .card:hover .art{opacity:.75}
   .card .shot{
-    position:absolute;right:-6%;bottom:-8%;width:62%;border-radius:12px;overflow:hidden;
-    border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
-    transform:rotate(-3deg);transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .3s;
-    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%);
+    position:relative;z-index:1;align-self:flex-end;width:84%;margin:28px -9% -16% 0;
+    border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+    transform:rotate(-2deg);transform-origin:bottom right;transition:transform .4s cubic-bezier(.2,.7,.2,1);
+    -webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 100%);mask-image:linear-gradient(180deg,#000 60%,transparent 100%);
     pointer-events:none;
   }
-  .card .shot img{display:block;width:100%;height:auto}
-  .card:hover .shot{transform:rotate(-1.5deg) translateY(-8px)}
-  .card.has-shot{min-height:340px}
-  .card.has-shot p{max-width:38ch}
-  .card.span-6 .shot{width:44%;bottom:-30%}
-  @media (max-width:699px){.card .shot{width:78%;right:-12%;bottom:-14%}}
+  .card .shot img{display:block;width:100%;height:auto;max-height:220px;object-fit:cover;object-position:top}
+  .card:hover .shot{transform:rotate(-1deg) translateY(-6px)}
+  .card.has-shot{justify-content:flex-start}
+  .card.has-shot p{max-width:44ch}
+  .card.span-6 .shot{width:52%;margin-top:-40px}
+  @media (max-width:999px){.card.span-6 .shot{width:84%;margin-top:28px}}
   .c-fire .art{background:radial-gradient(circle,#ff5a1f,#7a1fff 60%,transparent 72%)}
   .c-dash .art{background:radial-gradient(circle,#ffd166,#ff5a1f 60%,transparent 72%)}
   .c-table .art{background:radial-gradient(circle,#2bd4a6,#1f7aff 60%,transparent 72%)}
@@ -215,20 +221,23 @@
 <header class="hero" id="top">
   <div class="glow"></div>
   <div class="wrap">
-    <div class="kicker"><span class="dot"></span><span class="mono">Founder‑engineer · building in public</span></div>
-    <h1>Building through the <span class="em">AI transition.</span></h1>
-    <p class="lede">I'm Dane O'Connor. I ship software, run companies, make music, and write. This is where I share what I build, what I learn, and what I think it all means.</p>
-    <div class="cta">
-      <a class="btn primary" href="#work">See the work <span>↓</span></a>
-      <a class="btn" href="https://openthrottle.consulting" target="_blank" rel="noopener">Work with me <span>↗</span></a>
+    <div class="hero-text">
+      <div class="kicker"><span class="dot"></span><span class="mono">Founder‑engineer · building in public</span></div>
+      <h1>Building through the <span class="em">AI transition.</span></h1>
+      <p class="lede">I'm Dane O'Connor. I ship software, run companies, make music, and write. This is where I share what I build, what I learn, and what I think it all means.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See the work <span>↓</span></a>
+        <a class="btn" href="https://openthrottle.consulting" target="_blank" rel="noopener">Work with me <span>↗</span></a>
+      </div>
     </div>
+    <div class="portrait"><img src="assets/dane.jpg" alt="Dane O'Connor" width="400" height="400"></div>
   </div>
 </header>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>fireframe.ai</span><span>dilemmadash.org</span><span>table.travel</span><span>criticalfriends.ai</span><span>tandemtools.com</span><span>openthrottle.consulting</span><span>The Architect (Towers)</span><span>Narrative Domination</span>
-    <span>fireframe.ai</span><span>dilemmadash.org</span><span>table.travel</span><span>criticalfriends.ai</span><span>tandemtools.com</span><span>openthrottle.consulting</span><span>The Architect (Towers)</span><span>Narrative Domination</span>
+    <span>criticalfriends.ai</span><span>dilemmadash.org</span><span>table.travel</span><span>fireframe.ai</span><span>tandemtools.com</span><span>openthrottle.consulting</span><span>The Architect (Towers)</span><span>Narrative Domination</span>
+    <span>criticalfriends.ai</span><span>dilemmadash.org</span><span>table.travel</span><span>fireframe.ai</span><span>tandemtools.com</span><span>openthrottle.consulting</span><span>The Architect (Towers)</span><span>Narrative Domination</span>
   </div>
 </div>
 
@@ -268,11 +277,11 @@
       <p>Products across creativity, ethics, family, and engineering. Each one is a bet on how people and AI might live together well.</p>
     </div>
     <div class="grid">
-      <a class="card c-fire has-shot span-3 r" href="https://fireframe.ai" target="_blank" rel="noopener">
-        <div class="top"><span class="tag">Generative video · Music</span><span class="arrow">→</span></div>
-        <div><h3>Fireframe<small>fireframe.ai</small></h3>
-        <p>Text‑to‑video AI for music lovers and creators. Upload a track, direct the visuals, and get a stylized music video that moves with the beat.</p></div>
-        <div class="shot"><img src="assets/fireframe.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+      <a class="card c-crit has-shot span-3 r" href="https://criticalfriends.ai" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">AI · Product testing</span><span class="arrow">→</span></div>
+        <div><h3>Critical Friends<small>criticalfriends.ai</small></h3>
+        <p>Everything moves faster now. So do your blind spots. Swarms of AI customers use your product and give feedback at machine speed, before your real customers arrive.</p></div>
+        <div class="shot"><img src="assets/criticalfriends.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
         <div class="art"></div>
       </a>
       <a class="card c-dash has-shot span-3 r" href="https://dilemmadash.org" target="_blank" rel="noopener">
@@ -289,11 +298,11 @@
         <div class="shot"><img src="assets/table-travel.jpg" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
         <div class="art"></div>
       </a>
-      <a class="card c-crit has-shot span-2 r" href="https://criticalfriends.ai" target="_blank" rel="noopener">
-        <div class="top"><span class="tag">AI · Feedback</span><span class="arrow">→</span></div>
-        <div><h3>Critical Friends<small>criticalfriends.ai</small></h3>
-        <p>AI collaborators that push back. Honest, constructive critique for the work you care about, from perspectives you wouldn't think to ask.</p></div>
-        <div class="shot"><img src="assets/criticalfriends.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+      <a class="card c-fire has-shot span-2 r" href="https://fireframe.ai" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">Generative video · Music</span><span class="arrow">→</span></div>
+        <div><h3>Fireframe<small>fireframe.ai</small></h3>
+        <p>Text‑to‑video AI for music lovers and creators. Upload a track, direct the visuals, and get a stylized music video that moves with the beat.</p></div>
+        <div class="shot"><img src="assets/fireframe.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
         <div class="art"></div>
       </a>
       <a class="card c-tandem has-shot span-2 r" href="https://tandemtools.com" target="_blank" rel="noopener">
