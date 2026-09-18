@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dane O'Connor</title>
+<meta name="description" content="Founder-engineer building through the AI transition. Sharing what I build, what I learn, and what I think it means.">
+<meta property="og:title" content="Dane O'Connor">
+<meta property="og:description" content="Founder-engineer building through the AI transition.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-2:#121216;
+    --ink:#f2efe8;
+    --ink-2:#a9a59c;
+    --ink-3:#6b6862;
+    --line:rgba(242,239,232,.12);
+    --accent:#ff5a1f;
+    --accent-2:#ffd166;
+    --max:1180px;
+    --gutter:clamp(16px,4vw,48px);
+    --serif:"Instrument Serif",Georgia,serif;
+    --sans:"Space Grotesk",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#f4f1ea; --bg-2:#ebe7de; --ink:#121214; --ink-2:#4f4d48; --ink-3:#8a877f;
+      --line:rgba(18,18,20,.12);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f4f1ea; --bg-2:#ebe7de; --ink:#121214; --ink-2:#4f4d48; --ink-3:#8a877f;
+    --line:rgba(18,18,20,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+  .serif{font-family:var(--serif);font-weight:400}
+  .em{font-family:var(--serif);font-style:italic;color:var(--accent)}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  nav .brand{font-family:var(--mono);font-size:13px;letter-spacing:.06em}
+  nav .brand b{color:var(--accent)}
+  nav ul{display:flex;gap:22px;list-style:none}
+  nav ul a{font-size:13px;color:var(--ink-2);transition:color .2s}
+  nav ul a:hover{color:var(--ink)}
+  @media (max-width:640px){nav ul{gap:14px}nav ul li:nth-child(n+4){display:none}}
+
+  /* hero */
+  .hero{padding:clamp(72px,12vw,150px) 0 clamp(56px,8vw,110px);position:relative;overflow:hidden}
+  .hero .kicker{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .hero .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 24%,transparent)}50%{box-shadow:0 0 0 10px transparent}}
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(46px,8.6vw,124px);line-height:.96;letter-spacing:-.02em;
+    max-width:14ch;
+  }
+  .hero h1 .em{white-space:normal}
+  .hero p.lede{margin-top:34px;max-width:52ch;font-size:clamp(17px,1.6vw,21px);color:var(--ink-2)}
+  .hero .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:500;transition:.2s}
+  .btn:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  .hero .glow{position:absolute;right:-10%;top:10%;width:min(60vw,720px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 28%,transparent),transparent 70%);filter:blur(30px);pointer-events:none;z-index:0}
+
+  /* marquee */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0}
+  .marquee .track{display:flex;gap:48px;width:max-content;animation:scroll 42s linear infinite;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .marquee .track span::before{content:"◆";color:var(--accent);margin-right:48px;font-size:8px;vertical-align:middle}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee .track{animation:none}.hero .kicker .dot{animation:none}}
+
+  /* sections */
+  section{padding:clamp(72px,9vw,130px) 0}
+  .sec-head{display:grid;grid-template-columns:1fr;gap:18px;margin-bottom:clamp(36px,5vw,64px)}
+  @media (min-width:820px){.sec-head{grid-template-columns:1fr 2fr;align-items:end}}
+  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.02em}
+  .sec-head p{color:var(--ink-2);font-size:clamp(16px,1.3vw,18px);max-width:56ch}
+  .num{display:block;margin-bottom:14px}
+
+  /* thesis */
+  .pillars{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media (min-width:820px){.pillars{grid-template-columns:repeat(3,1fr)}}
+  .pillar{background:var(--bg);padding:clamp(26px,3vw,40px);position:relative;overflow:hidden;transition:background .3s}
+  .pillar:hover{background:var(--bg-2)}
+  .pillar h3{font-family:var(--serif);font-size:clamp(30px,3vw,42px);font-weight:400;line-height:1;margin:22px 0 14px}
+  .pillar p{color:var(--ink-2);font-size:15.5px}
+  .pillar .big{position:absolute;right:-6px;bottom:-30px;font-family:var(--serif);font-size:170px;line-height:1;color:var(--ink);opacity:.05;pointer-events:none}
+
+  /* work grid */
+  .grid{display:grid;gap:18px}
+  @media (min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1000px){.grid{grid-template-columns:repeat(6,1fr)}
+    .card.span-3{grid-column:span 3}.card.span-2{grid-column:span 2}.card.span-4{grid-column:span 4}.card.span-6{grid-column:span 6}}
+  .card{
+    position:relative;display:flex;flex-direction:column;justify-content:space-between;
+    min-height:280px;padding:26px;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(160deg,var(--bg-2),var(--bg));overflow:hidden;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .card .arrow{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:15px;transition:.25s;flex:none}
+  .card:hover .arrow{background:var(--accent);border-color:var(--accent);color:#fff;transform:rotate(-45deg)}
+  .card h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3vw,44px);line-height:1;letter-spacing:-.01em;margin-top:40px}
+  .card h3 small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-3);margin-top:10px;text-transform:none}
+  .card p{color:var(--ink-2);font-size:15px;margin-top:12px;max-width:44ch}
+  .card .art{position:absolute;inset:auto -20% -40% auto;width:60%;aspect-ratio:1;border-radius:50%;filter:blur(40px);opacity:.45;pointer-events:none;transition:opacity .3s}
+  .card:hover .art{opacity:.75}
+  .card .shot{
+    position:absolute;right:-6%;bottom:-8%;width:62%;border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
+    transform:rotate(-3deg);transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .3s;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%);
+    pointer-events:none;
+  }
+  .card .shot img{display:block;width:100%;height:auto}
+  .card:hover .shot{transform:rotate(-1.5deg) translateY(-8px)}
+  .card.has-shot{min-height:340px}
+  .card.has-shot p{max-width:38ch}
+  .card.span-6 .shot{width:44%;bottom:-30%}
+  @media (max-width:699px){.card .shot{width:78%;right:-12%;bottom:-14%}}
+  .c-fire .art{background:radial-gradient(circle,#ff5a1f,#7a1fff 60%,transparent 72%)}
+  .c-dash .art{background:radial-gradient(circle,#ffd166,#ff5a1f 60%,transparent 72%)}
+  .c-table .art{background:radial-gradient(circle,#2bd4a6,#1f7aff 60%,transparent 72%)}
+  .c-crit .art{background:radial-gradient(circle,#ff3d7f,#ff5a1f 60%,transparent 72%)}
+  .c-tandem .art{background:radial-gradient(circle,#8cc8ff,#7a1fff 60%,transparent 72%)}
+  .c-throttle .art{background:radial-gradient(circle,#ffd166,#2bd4a6 60%,transparent 72%)}
+
+  /* creative */
+  .creative{display:grid;gap:18px}
+  @media (min-width:820px){.creative{grid-template-columns:1fr 1fr}}
+  .piece{border:1px solid var(--line);border-radius:18px;padding:clamp(26px,3vw,40px);background:var(--bg-2);position:relative;overflow:hidden}
+  .piece .cover{
+    width:100%;aspect-ratio:16/9;border-radius:12px;margin-bottom:26px;display:grid;place-items:center;
+    font-family:var(--serif);font-size:clamp(28px,3.4vw,46px);letter-spacing:-.01em;text-align:center;padding:20px;
+  }
+  .piece.album .cover{background:#0b0b0d;color:#fff;padding:0;aspect-ratio:1;max-width:420px}
+  .piece.album .cover img{display:block;width:100%;height:100%;object-fit:cover}
+  .piece.book .cover{background:repeating-linear-gradient(-45deg,#1b1b20 0 14px,#232329 14px 28px);color:#ffd166;aspect-ratio:16/10}
+  .piece h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3vw,42px);line-height:1}
+  .piece .by{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin:8px 0 14px;letter-spacing:.06em}
+  .piece p{color:var(--ink-2);font-size:15.5px}
+  .piece .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .chip{font-size:13px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;transition:.2s}
+  .chip:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+
+  /* about */
+  .about{display:grid;gap:36px}
+  @media (min-width:900px){.about{grid-template-columns:3fr 2fr;gap:64px}}
+  .about .prose p{font-size:clamp(17px,1.5vw,20px);color:var(--ink-2);margin-bottom:20px;max-width:60ch}
+  .about .prose p strong{color:var(--ink);font-weight:500}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .facts div span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+
+  /* quote band */
+  .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .band blockquote{font-family:var(--serif);font-size:clamp(28px,4.4vw,56px);line-height:1.1;letter-spacing:-.015em;max-width:24ch}
+  .band cite{display:block;margin-top:22px;font-style:normal}
+
+  /* contact */
+  .contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,110px);line-height:.95;letter-spacing:-.02em}
+  .contact .row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--ink-3)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* reveal */
+  .r{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .r.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">dane<b>.</b>oconnor</a>
+    <ul>
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#creative">Creative</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span><span class="mono">Founder‑engineer · building in public</span></div>
+    <h1>Building through the <span class="em">AI transition.</span></h1>
+    <p class="lede">I'm Dane O'Connor. I ship software, run companies, make music, and write. This is where I share what I build, what I learn, and what I think it all means.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See the work <span>↓</span></a>
+      <a class="btn" href="https://openthrottle.consulting" target="_blank" rel="noopener">Work with me <span>↗</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>fireframe.ai</span><span>dilemmadash.org</span><span>table.travel</span><span>criticalfriends.ai</span><span>tandemtools.com</span><span>openthrottle.consulting</span><span>The Architect (Towers)</span><span>Narrative Domination</span>
+    <span>fireframe.ai</span><span>dilemmadash.org</span><span>table.travel</span><span>criticalfriends.ai</span><span>tandemtools.com</span><span>openthrottle.consulting</span><span>The Architect (Towers)</span><span>Narrative Domination</span>
+  </div>
+</div>
+
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head r">
+      <div><span class="mono num">01 — Thesis</span><h2>Three things I care about</h2></div>
+      <p>The tools changed. The stakes changed. Most of us are still figuring out what to do with our hands. My answer is to build, pay attention, and say what I see.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar r">
+        <span class="mono">Build</span>
+        <h3>Software, <span class="em">obsessively.</span></h3>
+        <p>I've been writing code most of my life. AI didn't replace that love, it multiplied it. I ship products end to end, from idea to infrastructure to the last pixel.</p>
+        <span class="big">B</span>
+      </div>
+      <div class="pillar r">
+        <span class="mono">Learn</span>
+        <h3>Get the transition <span class="em">right.</span></h3>
+        <p>This shift will reshape work, creativity, and power. I want to help us make it safely, by building carefully, testing honestly, and sharing what actually works.</p>
+        <span class="big">L</span>
+      </div>
+      <div class="pillar r">
+        <span class="mono">Meaning</span>
+        <h3>Find purpose in a <span class="em">new era.</span></h3>
+        <p>When machines can do more of what we do, the question of what we're for gets sharper. I explore it through philosophy, moral dilemmas, music, and story.</p>
+        <span class="big">M</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head r">
+      <div><span class="mono num">02 — Work</span><h2>Things I've built</h2></div>
+      <p>Products across creativity, ethics, family, and engineering. Each one is a bet on how people and AI might live together well.</p>
+    </div>
+    <div class="grid">
+      <a class="card c-fire has-shot span-3 r" href="https://fireframe.ai" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">Generative video · Music</span><span class="arrow">→</span></div>
+        <div><h3>Fireframe<small>fireframe.ai</small></h3>
+        <p>Text‑to‑video AI for music lovers and creators. Upload a track, direct the visuals, and get a stylized music video that moves with the beat.</p></div>
+        <div class="shot"><img src="assets/fireframe.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="art"></div>
+      </a>
+      <a class="card c-dash has-shot span-3 r" href="https://dilemmadash.org" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">Ethics · Philosophy</span><span class="arrow">→</span></div>
+        <div><h3>DilemmaDash<small>dilemmadash.org</small></h3>
+        <p>Face real moral dilemmas and see where you stand among philosophers, historical figures, and fictional characters. Meet your moral twin and your nemesis.</p></div>
+        <div class="shot"><img src="assets/dilemmadash.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="art"></div>
+      </a>
+      <a class="card c-table has-shot span-2 r" href="https://table.travel" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">Family · Food</span><span class="arrow">→</span></div>
+        <div><h3>Table.Travel<small>table.travel</small></h3>
+        <p>Cook up an adventure your family will remember. Dishes from cities around the world, with music, stories, and a map of everywhere you've been.</p></div>
+        <div class="shot"><img src="assets/table-travel.jpg" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="art"></div>
+      </a>
+      <a class="card c-crit has-shot span-2 r" href="https://criticalfriends.ai" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">AI · Feedback</span><span class="arrow">→</span></div>
+        <div><h3>Critical Friends<small>criticalfriends.ai</small></h3>
+        <p>AI collaborators that push back. Honest, constructive critique for the work you care about, from perspectives you wouldn't think to ask.</p></div>
+        <div class="shot"><img src="assets/criticalfriends.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="art"></div>
+      </a>
+      <a class="card c-tandem has-shot span-2 r" href="https://tandemtools.com" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">Music · Creation</span><span class="arrow">→</span></div>
+        <div><h3>Tandem<small>tandemtools.com</small></h3>
+        <p>A music creation app. Make songs with an AI partner that plays along, so an idea in your head becomes a track you can share.</p></div>
+        <div class="shot"><img src="assets/tandem.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="art"></div>
+      </a>
+      <a class="card c-throttle has-shot span-6 r" href="https://openthrottle.consulting" target="_blank" rel="noopener">
+        <div class="top"><span class="tag">Consulting · AI‑native development</span><span class="arrow">→</span></div>
+        <div><h3>Open Throttle<small>openthrottle.consulting — Build faster. Scale bigger.</small></h3>
+        <p>My consultancy. AI opportunity discovery, rapid first iterations, and full‑stack AI integration for teams that want to move at the speed the moment allows.</p></div>
+        <div class="shot"><img src="assets/openthrottle.png" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>
+        <div class="art"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="creative">
+  <div class="wrap">
+    <div class="sec-head r">
+      <div><span class="mono num">03 — Creative</span><h2>Music &amp; writing</h2></div>
+      <p>Code is one way to think out loud. These are the others.</p>
+    </div>
+    <div class="creative">
+      <div class="piece album r">
+        <div class="cover"><img src="assets/the-architect-towers.jpg" alt="The Architect (Towers) album cover"></div>
+        <span class="mono">Album · 2025 · 8 tracks</span>
+        <h3>The Architect (Towers)</h3>
+        <div class="by">by The Architect</div>
+        <p>A concept album about cognitive isolation in the modern age. Across eight tracks, a software engineer moves from obsessive growth to collapse to tentative reconstruction. Ambition against presence, scale against human connection. Honest, vulnerable, unresolved.</p>
+        <div class="links">
+          <a class="chip" href="https://soundcloud.com/thedeeno/sets/the-architect-towers" target="_blank" rel="noopener">SoundCloud ↗</a>
+          <a class="chip" href="https://open.spotify.com/search/The%20Architect%20Towers" target="_blank" rel="noopener">Spotify ↗</a>
+        </div>
+      </div>
+      <div class="piece book r">
+        <div class="cover">Narrative<br>Domination</div>
+        <span class="mono">Book</span>
+        <h3>Narrative Domination</h3>
+        <div class="by">by Dane O'Connor</div>
+        <p>On stories as the operating system of power, and what happens when machines start writing them too.</p>
+        <div class="links">
+          <a class="chip" href="https://www.amazon.com/s?k=Narrative+Domination+Dane+O%27Connor" target="_blank" rel="noopener">Amazon ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <section>
+    <div class="wrap r">
+      <blockquote>“The point isn't to be replaced or to resist. It's to <span class="em">build the thing that comes next</span>, carefully, in public.”</blockquote>
+      <cite class="mono">— Dane O'Connor</cite>
+    </div>
+  </section>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head r">
+      <div><span class="mono num">04 — About</span><h2>Background</h2></div>
+    </div>
+    <div class="about">
+      <div class="prose r">
+        <p><strong>I'm a founder‑engineer.</strong> I've spent my career building software and the companies around it, usually as the person who both writes the code and decides what to write.</p>
+        <p>The last few years changed the job. Working with AI every day, I've watched the distance between an idea and a shipped product collapse. That's thrilling and unnerving, and I think the honest response is to build in public, share the methods, and be candid about what's working and what isn't.</p>
+        <p>Beyond software I make music as <strong>thedeeno</strong>, write about narrative and power, and build tools that help people think about ethics. They're all the same project: figuring out how to be useful, and human, in an era where the ground keeps moving.</p>
+      </div>
+      <div class="facts r">
+        <div><span>Role</span><span>Founder, engineer, consultant</span></div>
+        <div><span>Focus</span><span>AI‑native product development, agentic tooling, generative media</span></div>
+        <div><span>Companies</span><span>Fireframe, Open Throttle Consulting, Tandem</span></div>
+        <div><span>Projects</span><span>DilemmaDash, Table.Travel, Critical Friends</span></div>
+        <div><span>Music</span><span><em>The Architect (Towers)</em> — as The Architect</span></div>
+        <div><span>Writing</span><span><em>Narrative Domination</em></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap r">
+    <span class="mono num">05 — Contact</span>
+    <h2>Let's build <span class="em">something.</span></h2>
+    <div class="row">
+      <a class="btn primary" href="mailto:dane@fireframe.ai">dane@fireframe.ai</a>
+      <a class="btn" href="https://openthrottle.consulting" target="_blank" rel="noopener">Open Throttle Consulting ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Dane O'Connor</span>
+    <span class="mono">Built by hand, with help.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
